@@ -1,0 +1,4 @@
+name: Punchtree-Core
+main: net.punchtree.core.PunchtreeCore
+version: 0.0
+description: The backbone to the PunchTree Server/Network
