@@ -1,4 +1,7 @@
 name: Punchtree-Core
 main: net.punchtree.core.PunchtreeCore
 version: 0.0
-description: The backbone to the PunchTree Server/Network
+api-version: 1.17
+author: Cxom
+website: www.punchtree.net
+description: The backbone of the PunchTree Minigames Server
