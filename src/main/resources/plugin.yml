@@ -1,6 +1,6 @@
 name: PunchTree-Core
 main: net.punchtree.core.PunchTreeCorePlugin
-version: 0.1.7
+version: 0.2.3
 api-version: 1.17
 author: Cxom
 website: www.punchtree.net
@@ -9,3 +9,4 @@ depend: [PunchTree-Minigames, Melee, PunchTree-Util]
 
 commands:
   play:
+    usage: /play <game>
