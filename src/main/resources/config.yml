@@ -1,6 +1,6 @@
 
 ## Make sure strings containing colors are in quotes.
-Message Of The Day: "A Minecraft Server"
+Message Of The Day: "&3Loqua City &7\\& &bMinigames!"
 
 ## Format in a list style:
 ## Splashes:
@@ -8,3 +8,4 @@ Message Of The Day: "A Minecraft Server"
 ##    - Splash 2
 ##    - Splash 3
 Splashes:
+  - Splashy splash!

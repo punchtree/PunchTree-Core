@@ -1,7 +1,11 @@
-name: Punchtree-Core
-main: net.punchtree.core.PunchtreeCore
-version: 0.0
+name: PunchTree-Core
+main: net.punchtree.core.PunchTreeCorePlugin
+version: 0.1.7
 api-version: 1.17
 author: Cxom
 website: www.punchtree.net
 description: The backbone of the PunchTree Minigames Server
+depend: [PunchTree-Minigames, Melee, PunchTree-Util]
+
+commands:
+  play:
