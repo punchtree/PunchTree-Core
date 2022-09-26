@@ -10,7 +10,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.cxom.jailbreak3.Jailbreak;
 import me.cxom.melee2.Melee;
+import net.punchtree.battle.Battle;
 import net.punchtree.core.command.PlayCommand;
 import net.punchtree.core.listeners.PressurePlateListener;
 import net.punchtree.core.logging.MessageOfTheDay;
@@ -21,6 +23,8 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 
 	private Matchmaker meleeMatchmaker;
 	private Matchmaker rabbitMatchmaker;
+	private Matchmaker jailbreakMatchmaker;
+	private Matchmaker battleMatchmaker;
 	private Location MINIGAMES_HUB;
 	
 	public static PunchTreeCorePlugin getInstance() {
@@ -32,19 +36,33 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 		saveDefaultConfig();
 
 		MINIGAMES_HUB = new Location(Bukkit.getWorld("Quarantine"), 4000.5, 71, -2499.5);
-		Consumer<Player> onPlayerLeaveLobby = this::spawnPlayerAtHub;
-		
-		List<PvpGame> possibleMeleeMatches = new ArrayList<>(Melee.getPlugin().getMeleeGameManager().getGamesList());
-		meleeMatchmaker = new Matchmaker(possibleMeleeMatches, onPlayerLeaveLobby);
-		
-		List<PvpGame> possibleRabbitMatches = new ArrayList<>(Melee.getPlugin().getRabbitGameManager().getGamesList());
-		rabbitMatchmaker = new Matchmaker(possibleRabbitMatches, onPlayerLeaveLobby);
-		
-		getCommand("play").setExecutor(new PlayCommand());
-		
+		createMatchmakers();
+
+		setCommandExecutors();
+
 		registerEvents();
 	}
-	
+
+	private void setCommandExecutors() {
+		getCommand("play").setExecutor(new PlayCommand());
+	}
+
+	private void createMatchmakers() {
+		Consumer<Player> onPlayerLeaveLobbyOrGame = this::spawnPlayerAtHub;
+
+		List<PvpGame> possibleMeleeMatches = new ArrayList<>(Melee.getPlugin().getMeleeGameManager().getGamesList());
+		meleeMatchmaker = new Matchmaker("Melee", possibleMeleeMatches, onPlayerLeaveLobbyOrGame);
+
+		List<PvpGame> possibleRabbitMatches = new ArrayList<>(Melee.getPlugin().getRabbitGameManager().getGamesList());
+		rabbitMatchmaker = new Matchmaker("Rabbit", possibleRabbitMatches, onPlayerLeaveLobbyOrGame);
+
+		List<PvpGame> possibleJailbreakMatches = new ArrayList<>(Jailbreak.getPlugin().getJailbreakGameManager().getGamesList());
+		jailbreakMatchmaker = new Matchmaker("Jailbreak", possibleJailbreakMatches, onPlayerLeaveLobbyOrGame);
+
+		List<PvpGame> possibleBattleMatches = new ArrayList<>(Battle.getPlugin().getBattleGameManager().getGamesList());
+		battleMatchmaker = new Matchmaker("Battle", possibleBattleMatches, onPlayerLeaveLobbyOrGame);
+	}
+
 	private void spawnPlayerAtHub(Player player) {
 		player.teleport(MINIGAMES_HUB);
 		player.setGameMode(GameMode.ADVENTURE);
@@ -64,6 +82,10 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 			return meleeMatchmaker;
 		case "rabbit":
 			return rabbitMatchmaker;
+		case "jailbreak":
+			return jailbreakMatchmaker;
+		case "battle":
+			return battleMatchmaker;
 		default:
 			return null;
 		}
