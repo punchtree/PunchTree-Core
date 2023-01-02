@@ -1,2 +1,10 @@
 /bin/
 /target/
+*.eml
+*.iml
+/target/
+/.classpath
+/.project
+/dependency-reduced-pom.xml
+/.settings/
+/.idea/
