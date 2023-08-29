@@ -23,7 +23,7 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 	private Matchmaker meleeMatchmaker;
 	private Matchmaker rabbitMatchmaker;
 	private Matchmaker jailbreakMatchmaker;
-	private Matchmaker battleMatchmaker;
+//	private Matchmaker battleMatchmaker;
 	private Location MINIGAMES_HUB;
 	
 	public static PunchTreeCorePlugin getInstance() {
@@ -58,8 +58,8 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 		List<PvpGame> possibleJailbreakMatches = new ArrayList<>(Jailbreak.getPlugin().getJailbreakGameManager().getGamesList());
 		jailbreakMatchmaker = new Matchmaker("Jailbreak", possibleJailbreakMatches, onPlayerLeaveLobbyOrGame);
 
-		List<PvpGame> possibleBattleMatches = new ArrayList<>(Battle.getPlugin().getBattleGameManager().getGamesList());
-		battleMatchmaker = new Matchmaker("Battle", possibleBattleMatches, onPlayerLeaveLobbyOrGame);
+//		List<PvpGame> possibleBattleMatches = new ArrayList<>(Battle.getPlugin().getBattleGameManager().getGamesList());
+//		battleMatchmaker = new Matchmaker("Battle", possibleBattleMatches, onPlayerLeaveLobbyOrGame);
 	}
 
 	private void spawnPlayerAtHub(Player player) {
@@ -83,8 +83,8 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 			return rabbitMatchmaker;
 		case "jailbreak":
 			return jailbreakMatchmaker;
-		case "battle":
-			return battleMatchmaker;
+//		case "battle":
+//			return battleMatchmaker;
 		default:
 			return null;
 		}
