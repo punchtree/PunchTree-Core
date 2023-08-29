@@ -13,8 +13,9 @@ import net.punchtree.core.PunchTreeCorePlugin;
 
 public class MessageOfTheDay implements Listener{
 
+	// TODO convert this to just legacy deserialize with adventure the config message, instead of manually replacing
 	public static String getMessageOfTheDay(){
-		return PunchTreeCorePlugin.getInstance().getConfig().getString("Message Of The Day").replace("&", "ง").replace("\\ง", "&");
+		return PunchTreeCorePlugin.getInstance().getConfig().getString("Message Of The Day").replace("&", "ยง").replace("\\ยง", "&");
 	}
 
 	public static String getSplash(){

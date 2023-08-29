@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import net.punchtree.melee.Melee;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -11,8 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.cxom.jailbreak3.Jailbreak;
-import me.cxom.melee2.Melee;
-import net.punchtree.battle.Battle;
 import net.punchtree.core.command.PlayCommand;
 import net.punchtree.core.listeners.PressurePlateListener;
 import net.punchtree.core.logging.MessageOfTheDay;
