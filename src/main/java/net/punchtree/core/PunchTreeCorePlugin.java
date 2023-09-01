@@ -14,7 +14,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.cxom.jailbreak3.Jailbreak;
 import net.punchtree.core.command.PlayCommand;
 import net.punchtree.core.listeners.PressurePlateListener;
-import net.punchtree.core.logging.MessageOfTheDay;
 import net.punchtree.minigames.game.PvpGame;
 import net.punchtree.minigames.lobby.Matchmaker;
 
@@ -32,8 +31,6 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable(){
-		saveDefaultConfig();
-
 		MINIGAMES_HUB = new Location(Bukkit.getWorld("Quarantine"), 4000.5, 71, -2499.5);
 		createMatchmakers();
 
@@ -71,7 +68,6 @@ public class PunchTreeCorePlugin extends JavaPlugin {
 	}
 	
 	private void registerEvents() {
-		Bukkit.getServer().getPluginManager().registerEvents(new MessageOfTheDay(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new PressurePlateListener(), this);
 	}
 
